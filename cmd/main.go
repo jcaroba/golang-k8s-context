@@ -50,28 +50,35 @@ func MyMenu() {
 		panic(err)
 	}
 
+	// Print each context that exist on the kubeconfig
 	for i := 0; i < len(myContexts.Contexts); i++ {
 		fmt.Println(i, "=>", myContexts.Contexts[i].Name)
 	}
 	fmt.Println("")
 	fmt.Println("Please type the context number:")
 
+	// Get the number of the chosen context
 	input := bufio.NewScanner(os.Stdin)
 	input.Scan()
 	chosen := input.Text()
 	chosenInt, _ := strconv.Atoi(chosen)
 
+	// check if were chosen a existent context
 	if chosenInt < 0 || chosenInt >= len(myContexts.Contexts) {
 		fmt.Printf("Invalid Option\n\n")
 		os.Exit(0)
 	}
 
-	fmt.Printf("Switching to %s", myContexts.Contexts[chosenInt].Name)
-
+	// Change to the context you have chosen
 	cmd := exec.Command("kubectl", "config", "use-context", myContexts.Contexts[chosenInt].Name)
-	fmt.Println("\n\n")
-
 	if err := cmd.Run(); err != nil {
 		log.Fatal("Invalid option")
 	}
+
+	// Show the current context
+	cmdGetCurrentContext := exec.Command("kubectl", "config", "current-context")
+	output, _ := cmdGetCurrentContext.Output()
+
+	fmt.Println("\nNow your Current Context is: ", string(output))
+
 }
