@@ -1,4 +1,4 @@
-# Easy context switching ( k8s )
+# Easy context switching ( K8s )
 
 When you use kubectl to interact with more than one clusters, you have to type some commands to switch between the different contexts. This is a very simple solution to help you on that.
 
