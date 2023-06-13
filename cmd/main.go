@@ -41,7 +41,8 @@ func switchK8sContext() {
 	// Read .kube/config
 	data, error := os.ReadFile(kubeConfig)
 	if error != nil {
-		panic(error)
+		fmt.Println("~/.kube/config not found, before using this tool you need at lease one kubernet context\n")
+		os.Exit(0)
 	}
 
 	// Creating object struct Config type
