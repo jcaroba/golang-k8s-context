@@ -13,4 +13,4 @@ This automation code will read the ~/.kube/config and will give the possibility 
 
 `go build -o thor cmd/main.go`
 
-After you build you can move the output file called thor to a bin directory that is on your path or use the commando ./thor to execute on the same directoty.
+After you build you can move the output file called thor to a bin directory that is on your path or use the commando `./thor` to execute on the same directoty.
