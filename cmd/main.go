@@ -11,6 +11,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+// Struct to unmarshal yml ~/.kube/config
 var Config struct {
 	Contexts []struct {
 		Name string `yaml:"name"`
@@ -18,10 +19,10 @@ var Config struct {
 }
 
 func main() {
-	MyMenu()
+	switchK8sContext()
 }
 
-func MyMenu() {
+func switchK8sContext() {
 	fmt.Println("\n")
 	fmt.Println("         / \\__")
 	fmt.Println("        (    @\\___")
@@ -33,15 +34,17 @@ func MyMenu() {
 	fmt.Println(" K8s Context Switching ")
 	fmt.Println("--------------------------")
 
+	// Get the profile .kube/config
 	dirname, _ := os.UserHomeDir()
 	kubeConfig := dirname + "/.kube/config"
 
-	// Read kubeconfig
+	// Read .kube/config
 	data, error := os.ReadFile(kubeConfig)
 	if error != nil {
 		panic(error)
 	}
 
+	// Creating object struct Config type
 	myContexts := Config
 
 	// Unmarshal yml
@@ -78,7 +81,6 @@ func MyMenu() {
 	// Show the current context
 	cmdGetCurrentContext := exec.Command("kubectl", "config", "current-context")
 	output, _ := cmdGetCurrentContext.Output()
-
 	fmt.Println("\nNow your Current Context is: ", string(output))
 
 }
