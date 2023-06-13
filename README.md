@@ -7,7 +7,7 @@ When you use kubectl to interact with more than one clusters, you have to type s
 
 This automation code will read the ~/.kube/config and will give the possibility to choose the context you want to switch on. It is important to use alias to define a friendly name on each context.
 
-![screen](./images/screenhis.png)
+![screen](./images/screen.png)
 
 ## Build & Installation
 
