@@ -11,5 +11,8 @@ This automation code will read the ~/.kube/config and will give the possibility 
 
 ## Build & Installation
 
-`env GOOS=target-OS GOARCH=target-architecture go build package-import-path`
+PLease change the target-OS and target-architecture on the command bellow.
 
+`env GOOS=target-OS GOARCH=target-architecture go build -o thor cmd/main.go`
+
+After you build you can move the output file called thor to a bin directory that is on your path.
