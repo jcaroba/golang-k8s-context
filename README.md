@@ -4,7 +4,7 @@ When you use kubectl connection to many clusters it is hard to switch between di
 
 
 ----
-How it works
+## How it works
 
 When you add a new context it is important to use alias to define a friendly name...
 
